@@ -27,7 +27,7 @@ export default function AnimatedSVG({ transitionIn = true, height = 64 }) {
         return () => {
             setVisibleState(false)
         }
-    }, [])
+    }, [transitionIn])
     return (
         <Box className="animateable">
             <LogoIcon height={height} visible={visibleState} />
