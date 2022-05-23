@@ -1,0 +1,11 @@
+.special-wrap {
+    background: hsla(122, 28%, 48%, 1);
+
+    background: linear-gradient(90deg, hsla(122, 28%, 48%, 1) 0%, hsla(301, 28%, 48%, 1) 100%);
+
+    background: -moz-linear-gradient(90deg, hsla(122, 28%, 48%, 1) 0%, hsla(301, 28%, 48%, 1) 100%);
+
+    background: -webkit-linear-gradient(90deg, hsla(122, 28%, 48%, 1) 0%, hsla(301, 28%, 48%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#589E5A", endColorstr="#9E589D", GradientType=1);
+}
