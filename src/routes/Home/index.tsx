@@ -19,10 +19,10 @@ export default function Home() {
             <Box className="special-wrap" sx={{ width: "100vw", margin: "0", padding: "25px 0" }}>
                 <Box id="logo-container" sx={{ padding: { xs: "25px 2%", md: "25px" }, background: "#fefefe86", borderRadius: "25px", height: { xs: "", md: "350px" }, width: { xs: "96%", md: "80%", xl: "50%" }, margin: "0 auto", display: "flex", flexDirection: { xs: "column", md: "row" }, gap: display ? { xs: "25px", md: "10%" } : "0", justifyItems: "center", alignItems: "center", justifyContent: "center", transition: "flex 1000ms, gap 1000ms" }}>
                     <AnimatedSVG height={256} transitionIn={true} />
-                    <Card sx={{ background: "#dededeac", visibility: display ? "visible" : "hidden", width: display ? { xs: "60%", md: "400px" } : "0px", height: display ? "250px" : "0px", opacity: display ? "100%" : "0%", transition: "height 1000ms ease 700ms, opacity 1000ms ease 700ms, width 1000ms" }}>
+                    <Card sx={{ background: "#dededeac", visibility: display ? "visible" : "hidden", width: display ? { xs: "80%", md: "400px" } : "0px", height: display ? {xs: "300px", md: "275px"} : "0px", opacity: display ? "100%" : "0%", transition: "height 1000ms ease 700ms, opacity 1000ms ease 700ms, width 1000ms" }}>
                         <CardContent>
-                            <Typography>
-                                I am Matthew Fallon:
+                            <Typography variant="h5">
+                                Matthew Fallon:
                             </Typography>
                             <List>
                                 <ListItem>
@@ -48,8 +48,8 @@ export default function Home() {
                     </Card>
                 </Box>
             </Box>
-            <Box component="main" sx={{width: {xs: "95vw", md: "80vw"}, margin: "20px auto"}}>
-                <Typography variant="h1">
+            <Box component="main" sx={{width: {xs: "95vw", md: "75vw"}, margin: "20px auto"}}>
+                <Typography variant="h2">
                     Interests
                 </Typography>
             </Box>
