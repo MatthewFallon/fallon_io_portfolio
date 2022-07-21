@@ -9,7 +9,7 @@ interface Page {
 
 const pages: Page[] = [
   {name: "projects", component: <p>Projects</p>},
-  {name: "contact", component: <p>Contact</p>}
+  {name: "contact", component: <p>Contact</p>},
 ]
 
 function App() {

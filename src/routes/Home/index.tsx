@@ -38,7 +38,7 @@ export default function Home() {
                         background: "#fafafaac",
                         visibility: display ? "visible" : "hidden",
                         width: display ? { xs: "80%", md: "400px" } : "0px",
-                        minWidth: {xs: "300px", md: "0px"},
+                        minWidth: { xs: "300px", md: "0px" },
                         height: display ? { xs: "300px", md: "275px" } : "0px",
                         opacity: display ? "100%" : "0%",
                         transition: "height 1000ms ease 700ms, opacity 1000ms ease 700ms, width 1000ms",
@@ -73,13 +73,23 @@ export default function Home() {
                     </Card>
                 </Box>
             </Box>
-            <Box component="main" sx={{ paddingBottom: "100px", width: "95vw",margin: "0 auto", backgroundImage: `url("${bitmap}")`, backgroundSize: "100%", backgroundRepeat: "repeat-y"}}>
-                <Typography variant="h2" sx={{ textAlign: {xs: "center", md: "start"}, width: { md: "70%", margin: "0 auto", padding: "20px 0" } }}>
+            <Box
+                component="main"
+                sx={{
+                    paddingBottom: "100px",
+                    width: "95vw",
+                    margin: "0 auto",
+                    backgroundImage: `url("${bitmap}")`,
+                    backgroundSize: "100%",
+                    backgroundRepeat: "repeat-y"
+                }}
+            >
+                <Typography variant="h2" sx={{ textAlign: { xs: "center", md: "start" }, width: { md: "70%", margin: "0 auto", padding: "20px 0" } }}>
                     Interests
                 </Typography>
-                <Card sx={{marginLeft: "auto", backgroundColor: "#e8e8e8ad", width: {xs: "100%", md: "80%", lg: "45%"}}}>
-                    <CardHeader title="Dev-Ops"/>
-                    <CardMedia component="img" image={devopsExample}/>
+                <Card sx={{ marginLeft: "auto", backgroundColor: "#e8e8e8ad", width: { xs: "100%", md: "80%", lg: "45%" } }}>
+                    <CardHeader title="Dev-Ops" />
+                    <CardMedia component="img" image={devopsExample} />
                     <CardContent>
                         <Typography>I have worked heavily with </Typography>
                     </CardContent>
