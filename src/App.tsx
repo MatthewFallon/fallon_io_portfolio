@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
+import Contact from 'routes/Contact';
 import Home from 'routes/Home';
 import Layout from 'routes/Layout';
+import Projects from 'routes/Projects';
 
 interface Page {
   name: string
@@ -8,8 +10,9 @@ interface Page {
 }
 
 const pages: Page[] = [
-  {name: "projects", component: <p>Projects</p>},
-  {name: "contact", component: <p>Contact</p>},
+  {name: "home", component: <Home />},
+  {name: "projects", component: <Projects />},
+  {name: "contact", component: <Contact />},
 ]
 
 function App() {

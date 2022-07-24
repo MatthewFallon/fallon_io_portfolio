@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { getStorage } from "firebase/storage"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,6 +25,7 @@ const firebaseConfig =  {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const auth = getAuth();
+const storage = getStorage();
 
 if (process.env.REACT_APP_FIREBASE_EMULATORS === "true") {
     connectFirestoreEmulator(db, "localhost", 8080)
@@ -31,4 +33,4 @@ if (process.env.REACT_APP_FIREBASE_EMULATORS === "true") {
 }
 
 // Exports at the bottom to allow for emulator initialization in the middle.
-export {app, db, auth}
+export {app, db, auth, storage}

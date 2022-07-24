@@ -1,12 +1,19 @@
-import { Computer, TableRows, Terminal } from "@mui/icons-material"
-import { Avatar, Box, Card, CardContent, CardHeader, CardMedia, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Typography } from "@mui/material"
-import AnimatedSVG from "components/AnimatedSVG"
-import { useEffect, useState } from "react"
-import "./style.css"
-import ProfilePic from "assets/profile-image.jpg";
+import { Computer, Storage, TableRows, Terminal } from "@mui/icons-material"
+import { Avatar, Box, Card, CardContent, CardHeader, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Typography } from "@mui/material"
 import bitmap from "assets/bitmap.png"
-import devopsExample from "assets/devops-example.png";
+import devopsExample from "assets/devops-example.png"
+import ProfilePic from "assets/profile-image.jpg"
+import AnimatedSVG from "components/AnimatedSVG"
+import FirebaseCardMedia from "components/FirebaseCardMedia"
+import { useEffect, useState } from "react"
+import useCardCollection, { CardData } from "services/firestoreStatic"
+import "./style.css"
+import webDevExample from "assets/webdev-example.png"
 
+const interestsDefault: CardData[] = [
+    { name: "Dev-Ops", description: "Hello", img: "devops-example.png", localFile: devopsExample },
+    { name: "Web Dev", description: "Hola", img: "webdev-example.png", localFile: webDevExample}
+]
 
 export default function Home() {
     const [display, setDisplay] = useState(false)
@@ -15,6 +22,11 @@ export default function Home() {
             setDisplay(true)
         }, 2000)
     })
+
+    const {status, cardCollection: interestCollection } = useCardCollection("interests", interestsDefault)
+
+    console.log(interestCollection);
+
 
     return (
         <>
@@ -76,24 +88,36 @@ export default function Home() {
             <Box
                 component="main"
                 sx={{
-                    paddingBottom: "100px",
+                    paddingBottom: "50px",
                     width: "95vw",
                     margin: "0 auto",
                     backgroundImage: `url("${bitmap}")`,
                     backgroundSize: "100%",
-                    backgroundRepeat: "repeat-y"
+                    backgroundRepeat: "repeat-y",
+                    minHeight: "calc(100vh - 64px)"
                 }}
             >
-                <Typography variant="h2" sx={{ textAlign: { xs: "center", md: "start" }, width: { md: "70%", margin: "0 auto", padding: "20px 0" } }}>
-                    Interests
-                </Typography>
-                <Card sx={{ marginLeft: "auto", backgroundColor: "#e8e8e8ad", width: { xs: "100%", md: "80%", lg: "45%" } }}>
-                    <CardHeader title="Dev-Ops" />
-                    <CardMedia component="img" image={devopsExample} />
-                    <CardContent>
-                        <Typography>I have worked heavily with </Typography>
-                    </CardContent>
-                </Card>
+                <Box sx={{display: "flex", width: { md: "70%"}, margin: "0 auto", padding: "20px 0" }}>
+                    <Typography variant="h2" sx={{ textAlign: { xs: "center", md: "start" } }}>
+                        Interests
+                    </Typography>
+                    <Typography variant="body1" sx={{ textAlign: { xs: "center", md: "start" }, color: theme => { return status !== "success" ? theme.palette.error.main : theme.palette.success.main } }}>
+                        <Storage/>
+                    </Typography>
+                </Box>
+                {interestCollection.map((value, index) => {
+                    let left = index % 2 === 0 ? false : true
+                    let background = left ? "#afceb0ce":"#c6a9c6ce"
+                    return (
+                        <Card key={index} sx={{ marginLeft: left ? {xs: 0, lg: "30px"} : "auto", marginRight: left ? "auto" : "0", marginBottom: {xs: "40px", xl: 0}, backgroundColor: background, width: { xs: "100%", md: "80%", lg: "60%", xl: "45%" } }}>
+                            <CardHeader title={value.name} />
+                            <FirebaseCardMedia collection="interests" file={value.img} localFile={value.localFile} />
+                            <CardContent>
+                                <Typography>{value.description}</Typography>
+                            </CardContent>
+                        </Card>
+                    )
+                })}
             </Box>
         </>
     )

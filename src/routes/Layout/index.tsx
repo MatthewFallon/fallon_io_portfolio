@@ -23,47 +23,31 @@ export default function Layout({ pages }: LayoutProps) {
 
     // Page links for use in both menu types.
     const pageLinks = pages.map((page, index) => {
+        let linkColor: "primary"|"secondary"
         if (index % 2 === 0) {
-            return <Link
-                onClick={e => { setTopDrawer(false) }}
-                key={index}
-                variant="h5"
-                color="primary"
-                underline={currPage === page.name ? "always" : "none"}
-                sx={{
-                    ":hover": {
-                        color: (theme) => { return theme.palette.primary.light },
-                        textShadow: "0.5px 0.5px 0 #565656"
-                    },
-                    ":active": { color: (theme) => { return theme.palette.primary.dark } }
-                }}
-                component={RouterLink}
-                to={`/${page.name}`}
-                className="menuLink"
-            >
-                {page.name[0].toUpperCase() + page.name.substring(1)}
-            </Link>
+            linkColor = "primary"
         } else {
-            return <Link
+            linkColor = "secondary"
+        }
+        return <Link
                 onClick={e => { setTopDrawer(false) }}
                 key={index}
                 variant="h5"
-                color="secondary"
-                underline={currPage === page.name ? "always" : "none"}
+                color={linkColor}
+                underline={currPage === page.name || (currPage === "" && page.name === "home") ? "always" : "none"}
                 sx={{
                     ":hover": {
-                        color: (theme) => { return theme.palette.secondary.light },
+                        color: (theme) => { return theme.palette[linkColor].light },
                         textShadow: "0.5px 0.5px 0 #565656"
                     },
-                    ":active": { color: (theme) => { return theme.palette.secondary.dark } }
+                    ":active": { color: (theme) => { return theme.palette[linkColor].dark } }
                 }}
                 component={RouterLink}
-                to={`/${page.name}`}
+                to={`/${page.name === "home" ? "" : page.name}`}
                 className="menuLink"
             >
                 {page.name[0].toUpperCase() + page.name.substring(1)}
             </Link>
-        }
     })
 
     return (
