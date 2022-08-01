@@ -1,4 +1,4 @@
-import { CardMedia, CircularProgress, useMediaQuery, useTheme } from "@mui/material";
+import { CardMedia, CircularProgress, Color, useMediaQuery, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { ref } from "firebase/storage";
 import { useEffect, useState } from "react";
@@ -24,7 +24,7 @@ export default function FirebaseCardMedia({collection, file, localFile}: {collec
     )
 }
 
-function useLoadedImage({collection, file}: {collection: string, file: string}) {
+function useLoadedImage({collection, file}: {collection: string, file: string, border?: Color}) {
     const [image, setImage] = useState<HTMLImageElement|undefined>()
     const [imageStatus, setImageStatus] = useState<"loading"|"success">("loading")
     const storage = useStorage()
@@ -33,7 +33,7 @@ function useLoadedImage({collection, file}: {collection: string, file: string}) 
     const { status, data } = useStorageDownloadURL(imageRef)
 
     useEffect(() => {
-        console.log("Triggered");
+        // console.log("Triggered");
         
         if (status !== "success" && imageStatus === "success") {
             setImageStatus("loading")

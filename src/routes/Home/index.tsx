@@ -10,9 +10,11 @@ import useCardCollection, { CardData } from "services/firestoreStatic"
 import "./style.css"
 import webDevExample from "assets/webdev-example.png"
 
+const description = "Loading from firestore..."
+
 const interestsDefault: CardData[] = [
-    { name: "Dev-Ops", description: "Hello", img: "devops-example.png", localFile: devopsExample },
-    { name: "Web Dev", description: "Hola", img: "webdev-example.png", localFile: webDevExample}
+    { name: "Dev-Ops", description, img: "devops-example.png", localFile: devopsExample },
+    { name: "Web Development", description, img: "webdev-example.png", localFile: webDevExample}
 ]
 
 export default function Home() {
@@ -25,7 +27,7 @@ export default function Home() {
 
     const {status, cardCollection: interestCollection } = useCardCollection("interests", interestsDefault)
 
-    console.log(interestCollection);
+    // console.log(interestCollection);
 
 
     return (
@@ -111,7 +113,7 @@ export default function Home() {
                     return (
                         <Card key={index} sx={{ marginLeft: left ? {xs: 0, lg: "30px"} : "auto", marginRight: left ? "auto" : "0", marginBottom: {xs: "40px", xl: 0}, backgroundColor: background, width: { xs: "100%", md: "80%", lg: "60%", xl: "45%" } }}>
                             <CardHeader title={value.name} />
-                            <FirebaseCardMedia collection="interests" file={value.img} localFile={value.localFile} />
+                            {value.img && <FirebaseCardMedia collection="interests" file={value.img} localFile={value.localFile} />}
                             <CardContent>
                                 <Typography>{value.description}</Typography>
                             </CardContent>

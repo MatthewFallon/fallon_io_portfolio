@@ -24,7 +24,7 @@ export default function AnimatedSVG({ transitionIn = true, height = 64 }) {
                 timeoutId.push(setTimeout(() => {
                     let lIntId = setInterval(() => {
                         if (offsetPercent < 100) {
-                            console.log("running: " + intervalId);
+                            // console.log("running: " + intervalId);
                             svgElement.style.strokeDashoffset = String(svgElement.getTotalLength() - (offsetPercent * (svgElement.getTotalLength() / 100)))
                             offsetPercent += rate
                         } else {
