@@ -3,11 +3,12 @@ import { Box, Button, Card, CardActions, CardContent, CardHeader, Typography } f
 import bitmap from "assets/bitmap.png"
 import FirebaseCardMedia from "components/FirebaseCardMedia";
 import useCardCollection, { CardData } from "services/firestoreStatic";
+import clcFeudExample from "assets/clc-feud-example.png"
 
 const description = "Loading from firestore..."
 
 const projectsDefault: CardData[] = [
-    {name: "CLC Feud", description}
+    {name: "CLC Feud", description, img: "clc-feud-example.png", localFile: clcFeudExample, link: "https://github.com/MatthewFallon/CLCFeud"}
 ]
 
 export default function Projects() {
