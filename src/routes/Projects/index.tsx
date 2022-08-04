@@ -47,7 +47,7 @@ export default function Projects() {
                                 <Typography>{value.description}</Typography>
                             </CardContent>
                             {value.link && <CardActions>
-                                <Button component="a" href={value.link} target="_blank">See More</Button>
+                                <Button color={left? "secondary": "primary"} component="a" href={value.link} target="_blank">See More</Button>
                             </CardActions>}
                         </Card>
                     )
