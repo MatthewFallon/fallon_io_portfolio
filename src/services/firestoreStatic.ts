@@ -16,12 +16,15 @@ export default function useCardCollection(collectionName: string, staticDefaults
     useEffect(() => {
         if (status !== "success") { setCardCollection(staticDefaults) }
         else {
-            setCardCollection((data as CardData[]).map(card => {
+            let cardData = (data as CardData[]).map(card => {
                 return {
                     ...staticDefaults.filter(def => def.img === card.img)[0],
                     ...card
                 }
-            }))
+            }).sort((a, b) => {
+                return a.order - b.order
+            })
+            setCardCollection(cardData)
         }
     }, [status, data, staticDefaults])
     return {status, cardCollection}
@@ -30,6 +33,7 @@ export default function useCardCollection(collectionName: string, staticDefaults
 export interface CardData {
     name: string,
     description: string,
+    order: number,
     link?: string,
     img?: string,
     localFile?: string

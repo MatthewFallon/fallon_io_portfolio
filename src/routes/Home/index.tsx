@@ -13,8 +13,8 @@ import webDevExample from "assets/webdev-example.png"
 const description = "Loading from firestore..."
 
 const interestsDefault: CardData[] = [
-    { name: "Dev-Ops", description, img: "devops-example.png", localFile: devopsExample },
-    { name: "Web Development", description, img: "webdev-example.png", localFile: webDevExample}
+    { name: "Dev-Ops", order: 1, description, img: "devops-example.png", localFile: devopsExample },
+    { name: "Web Development", order: 2, description, img: "webdev-example.png", localFile: webDevExample}
 ]
 
 export default function Home() {

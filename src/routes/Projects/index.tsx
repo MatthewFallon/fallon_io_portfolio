@@ -8,7 +8,7 @@ import clcFeudExample from "assets/clc-feud-example.png"
 const description = "Loading from firestore..."
 
 const projectsDefault: CardData[] = [
-    {name: "CLC Feud", description, img: "clc-feud-example.png", localFile: clcFeudExample, link: "https://github.com/MatthewFallon/CLCFeud"}
+    {name: "CLC Feud", order: 1, description, img: "clc-feud-example.png", localFile: clcFeudExample, link: "https://github.com/MatthewFallon/CLCFeud"}
 ]
 
 export default function Projects() {
